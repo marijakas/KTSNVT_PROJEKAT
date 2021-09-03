@@ -1,0 +1,34 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "~leaflet/dist/leaflet.css";
+.page {
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+}
+
+body {
+    // background-image: url('assets/img/pozadina.jpg');
+    // background-color: blanchedalmond;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.red-snackbar {
+    background-color: rgb(153, 50, 50);
+    color: lightgoldenrodyellow;
+}
+
+.green-snackbar {
+    background-color: rgb(29, 102, 29);
+    color: lightgreen;
+}

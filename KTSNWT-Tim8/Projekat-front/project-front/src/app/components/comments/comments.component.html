@@ -1,0 +1,33 @@
+<h2 class="center" >Comments</h2>
+<app-comment-edit *ngIf="!admin" [offerId]="offerId" (newComment)="onNewComment()"
+(done)="openSnackBar($event)"></app-comment-edit>
+
+<hr>
+
+<div class="row" *ngIf="dataReady">
+    <div  class="comment" *ngFor = "let comment of content.content">
+        <app-comment 
+        (done)="openSnackBar($event)" *ngIf="!comment.editing" [comment]="comment"
+        (commentDeleted)="onCommentDeleted()" (clickedEdit)="onClickedEdit($event)"></app-comment>  
+        
+        <app-comment-edit *ngIf="comment.editing" 
+        (done)="openSnackBar($event)"
+        (commentEdited)="onCommentEdited($event)"
+        (commentCreated)="onCommentCreated($event)"
+        [comment]="comment" [offerId]="offerId"></app-comment-edit>        
+        
+        <hr>
+    </div>
+    <div class="row row-text" *ngIf="!content.content.length">
+        <p>No comments to display.</p>
+    </div>
+    <mat-paginator class="row bottom" style="
+    display: flex;
+    justify-content: center" 
+    [length] = "paginatorDetails.length"
+    [pageSize]="paginatorDetails.pageSize"
+    [pageSizeOptions]="[5, 10, 25]"
+    (page)="onClick($event)"
+    >
+    </mat-paginator>
+</div>
